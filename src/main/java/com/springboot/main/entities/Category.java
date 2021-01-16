@@ -1,7 +1,11 @@
 package com.springboot.main.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name="tb_category")
@@ -15,6 +19,10 @@ public class Category {
         this.id = id;
         this.name = name;
     }
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "categories")
+    private Set<Product> products = new HashSet<>();
 
     public Category(){
 
@@ -42,6 +50,16 @@ public class Category {
         if (o == null || getClass() != o.getClass()) return false;
         Category category = (Category) o;
         return id.equals(category.id);
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 
     @Override
