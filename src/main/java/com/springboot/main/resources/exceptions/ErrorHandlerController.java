@@ -1,4 +1,4 @@
-package com.springboot.main.resources;
+package com.springboot.main.resources.exceptions;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.web.bind.annotation.RequestMapping;
