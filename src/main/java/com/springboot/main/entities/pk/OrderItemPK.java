@@ -2,6 +2,7 @@ package com.springboot.main.entities.pk;
 
 import com.springboot.main.entities.Order;
 import com.springboot.main.entities.Product;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Id;
@@ -12,6 +13,7 @@ import java.util.Objects;
 
 @Embeddable
 public class OrderItemPK implements Serializable {
+
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
@@ -28,6 +30,7 @@ public class OrderItemPK implements Serializable {
         this.order = order;
     }
 
+    @JsonIgnore
     public Product getProduct() {
         return product;
     }
